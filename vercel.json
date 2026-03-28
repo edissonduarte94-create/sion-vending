@@ -1,0 +1,15 @@
+{
+  "version": 2,
+  "name": "sionvending",
+  "builds": [
+    {
+      "src": "*.html",
+      "use": "@vercel/static"
+    }
+  ],
+  "routes": [
+    { "src": "/", "dest": "/index.html" },
+    { "src": "/dashboard", "dest": "/dashboard.html" },
+    { "src": "/portal-cliente", "dest": "/portal-cliente.html" }
+  ]
+}
