@@ -908,10 +908,13 @@
       }
       .step.accent { border-color: transparent; }
 
-      /* compare table → scroll horizontal */
-      .compare-table { overflow-x: auto; -webkit-overflow-scrolling: touch; }
-      .compare-head,
-      .compare-row { grid-template-columns: 160px 100px 100px; min-width: 360px; }
+      /* compare table → solo 2 columnas en mobile (label + VendingSion) */
+      .compare-table { overflow: visible; box-shadow: none; }
+      .compare-head  { grid-template-columns: 1fr 88px; }
+      .compare-row   { grid-template-columns: 1fr 88px; }
+      .ch-cell.bad   { display: none; }
+      .cr-x          { display: none; }
+      .ch-cell.good  { border-radius: 0 var(--r-sm) 0 0; }
 
       /* beneficios → scroll horizontal */
       .benefits-grid {
@@ -929,7 +932,7 @@
       }
       .benefits-grid::-webkit-scrollbar { display:none; }
       .benefit-card {
-        min-width: 268px; flex-shrink: 0;
+        min-width: 200px; max-width: 200px; flex-shrink: 0;
         scroll-snap-align: start;
       }
 
@@ -958,7 +961,7 @@
       }
       .testimonials::-webkit-scrollbar { display:none; }
       .tcard {
-        min-width: 280px; flex-shrink: 0;
+        min-width: 240px; max-width: 240px; flex-shrink: 0;
         scroll-snap-align: start;
       }
 
@@ -999,6 +1002,7 @@
   </nav>
 
   <div class="drawer" id="drawer">
+    <button onclick="closeDrawer()" aria-label="Cerrar menú" style="align-self:flex-end;padding:8px;margin-bottom:8px;color:var(--inv-2);font-size:28px;line-height:1;">✕</button>
     <a href="#como-funciona" onclick="closeDrawer()">Cómo funciona</a>
     <a href="#beneficios"    onclick="closeDrawer()">Beneficios</a>
     <a href="#faq"           onclick="closeDrawer()">Preguntas frecuentes</a>
