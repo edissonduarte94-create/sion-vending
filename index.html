@@ -261,21 +261,70 @@
     .nav.on .nav-links a { color: var(--text-2); }
     .nav.on .nav-links a:hover { color: var(--text); }
 
+    /* hamburger — anima a ✕ */
     .nav-ham { display:none; flex-direction:column; gap:5px; padding:8px; }
-    .nav-ham span { display:block; width:22px; height:1.5px; background:var(--inv); transition:background 280ms; }
+    .nav-ham span { display:block; width:22px; height:1.5px; background:var(--inv); transform-origin:center; }
+    .nav-ham span:nth-child(1) { transition:transform 280ms var(--ease), background 280ms; }
+    .nav-ham span:nth-child(2) { transition:opacity 180ms, transform 180ms, background 280ms; }
+    .nav-ham span:nth-child(3) { transition:transform 280ms var(--ease), background 280ms; }
     .nav.on .nav-ham span { background:var(--text); }
+    .nav-ham.active span:nth-child(1) { transform:translateY(6.5px) rotate(45deg); }
+    .nav-ham.active span:nth-child(2) { opacity:0; transform:scaleX(0); }
+    .nav-ham.active span:nth-child(3) { transform:translateY(-6.5px) rotate(-45deg); }
 
+    /* drawer */
     .drawer {
-      display:none; position:fixed; inset:0; z-index:99;
-      background:var(--bg-dark); padding:84px var(--px) 40px;
-      flex-direction:column; gap:4px;
+      position:fixed; inset:0; z-index:99;
+      background:var(--bg-dark);
+      display:flex; flex-direction:column;
+      padding:0 var(--px);
+      opacity:0; visibility:hidden; transform:translateY(-6px);
+      transition:opacity 260ms var(--ease), transform 260ms var(--ease), visibility 0ms 260ms;
     }
-    .drawer.open { display:flex; }
-    .drawer a {
-      font-family:var(--ff-head); font-size:26px; font-weight:600;
-      color:var(--inv); padding:14px 0; border-bottom:1px solid var(--border-inv);
+    .drawer.open {
+      opacity:1; visibility:visible; transform:translateY(0);
+      transition:opacity 260ms var(--ease), transform 260ms var(--ease), visibility 0ms 0ms;
     }
-    .drawer .btn { margin-top:20px; align-self:flex-start; }
+    .drawer-top {
+      display:flex; align-items:center; justify-content:space-between;
+      height:66px; border-bottom:1px solid var(--border-inv); flex-shrink:0;
+    }
+    .drawer-logo {
+      font-family:var(--ff-head); font-size:21px; font-weight:700;
+      color:var(--inv); letter-spacing:-0.02em;
+    }
+    .drawer-close {
+      width:36px; height:36px; border-radius:50%;
+      background:rgba(255,255,255,0.08); border:1px solid var(--border-inv);
+      display:flex; align-items:center; justify-content:center;
+      color:var(--inv); font-size:15px; cursor:pointer;
+      transition:background var(--fast);
+    }
+    .drawer-close:hover { background:rgba(255,255,255,0.16); }
+    .drawer-links {
+      display:flex; flex-direction:column;
+      flex:1; justify-content:center; gap:0;
+    }
+    .drawer-links a {
+      font-family:var(--ff-head); font-size:28px; font-weight:600;
+      color:var(--inv); padding:18px 0;
+      border-bottom:1px solid var(--border-inv);
+      display:flex; align-items:center; justify-content:space-between;
+      opacity:0; transform:translateY(10px);
+      transition:opacity 260ms var(--ease), transform 260ms var(--ease), color var(--fast);
+    }
+    .drawer-links a::after { content:'→'; font-size:18px; color:var(--amber); opacity:0.65; }
+    .drawer-links a:hover  { color:var(--amber); }
+    .drawer.open .drawer-links a:nth-child(1) { opacity:1; transform:none; transition-delay:60ms; }
+    .drawer.open .drawer-links a:nth-child(2) { opacity:1; transform:none; transition-delay:100ms; }
+    .drawer.open .drawer-links a:nth-child(3) { opacity:1; transform:none; transition-delay:140ms; }
+    .drawer.open .drawer-links a:nth-child(4) { opacity:1; transform:none; transition-delay:180ms; }
+    .drawer-foot {
+      padding:28px 0 calc(28px + env(safe-area-inset-bottom));
+      display:flex; flex-direction:column; gap:14px;
+      border-top:1px solid var(--border-inv); flex-shrink:0;
+    }
+    .drawer-tagline { font-size:13px; color:var(--inv-2); text-align:center; }
 
     /* ═══════════════════════════════
        HERO
@@ -875,13 +924,23 @@
     </button>
   </nav>
 
-  <div class="drawer" id="drawer">
-    <button onclick="closeDrawer()" aria-label="Cerrar menú" style="align-self:flex-end;padding:8px;margin-bottom:8px;color:var(--inv-2);font-size:28px;line-height:1;">✕</button>
-    <a href="#como-funciona" onclick="closeDrawer()">Cómo funciona</a>
-    <a href="#beneficios"    onclick="closeDrawer()">Beneficios</a>
-    <a href="#faq"           onclick="closeDrawer()">Preguntas frecuentes</a>
-    <a href="#cotizar"       onclick="closeDrawer()">Calculadora</a>
-    <a href="#cotizar" class="btn btn-amber" onclick="closeDrawer()">Solicitar cotización →</a>
+  <div class="drawer" id="drawer" role="dialog" aria-modal="true" aria-label="Menú de navegación">
+    <div class="drawer-top">
+      <span class="drawer-logo">VendingSion</span>
+      <button class="drawer-close" onclick="closeDrawer()" aria-label="Cerrar menú">✕</button>
+    </div>
+    <nav class="drawer-links">
+      <a href="#como-funciona" onclick="closeDrawer()">Cómo funciona</a>
+      <a href="#beneficios"    onclick="closeDrawer()">Beneficios</a>
+      <a href="#faq"           onclick="closeDrawer()">Preguntas</a>
+      <a href="#cotizar"       onclick="closeDrawer()">Calculadora</a>
+    </nav>
+    <div class="drawer-foot">
+      <a href="#cotizar" class="btn btn-amber" onclick="closeDrawer()" style="width:100%;justify-content:center;">
+        Solicitar cotización <span class="arr">→</span>
+      </a>
+      <p class="drawer-tagline">Bienestar en tu espacio, gestionado por nosotros.</p>
+    </div>
   </div>
 
   <main id="main">
@@ -1430,8 +1489,21 @@
     window.addEventListener('scroll', () => nav.classList.toggle('on', scrollY > 80), {passive:true});
 
     /* DRAWER */
-    function openDrawer()  { document.getElementById('drawer').classList.add('open'); }
-    function closeDrawer() { document.getElementById('drawer').classList.remove('open'); }
+    const ham = document.querySelector('.nav-ham');
+    function openDrawer() {
+      document.getElementById('drawer').classList.add('open');
+      ham.classList.add('active');
+      ham.setAttribute('aria-expanded','true');
+      document.body.style.overflow = 'hidden';
+    }
+    function closeDrawer() {
+      document.getElementById('drawer').classList.remove('open');
+      ham.classList.remove('active');
+      ham.setAttribute('aria-expanded','false');
+      document.body.style.overflow = '';
+    }
+    /* cerrar con Escape */
+    document.addEventListener('keydown', e => { if(e.key === 'Escape') closeDrawer(); });
 
     /* INTERSECTION OBSERVER */
     document.querySelectorAll('[data-a]').forEach(el =>
