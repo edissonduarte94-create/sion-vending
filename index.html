@@ -287,7 +287,7 @@
       padding: 110px var(--px) 80px;
       position: relative; overflow: hidden;
     }
-    /* subtle radial gradient glow — modern 2026 */
+    /* subtle radial gradient glow */
     .hero::before {
       content:'';
       position:absolute; inset:0;
@@ -335,207 +335,114 @@
     }
     .hero-link:hover { color:var(--inv); }
 
-    .hero-sectors {
-      padding-top:28px;
-      border-top:1px solid var(--border-inv);
-      display:flex; flex-direction:column; gap:10px;
-    }
-    .hero-sectors-label { font-size:11px; color:var(--text-3); letter-spacing:0.08em; text-transform:uppercase; }
-    .hero-sectors-row { display:flex; gap:8px; flex-wrap:wrap; }
-    .sector-tag {
-      padding:5px 12px; border-radius:999px;
-      font-size:12px; color:rgba(250,250,248,.55);
-      background:rgba(255,255,255,.06); border:1px solid var(--border-inv);
-    }
-
     /* ── Hero visual ── */
     .hero-visual { display:flex; flex-direction:column; gap:16px; }
 
-    .service-card {
-      background: rgba(255,255,255,0.05);
-      border:1px solid rgba(255,255,255,0.1);
-      border-radius:var(--r-lg);
+    /* ═══════════════════════════════
+       MARQUEE
+    ═══════════════════════════════ */
+    .marquee-section {
+      background:var(--bg-dark);
+      border-top:1px solid var(--border-inv);
+      padding:20px 0 24px;
       overflow:hidden;
-      backdrop-filter:blur(8px);
-      box-shadow:0 40px 80px rgba(0,0,0,.45), 0 0 0 1px rgba(255,255,255,.05) inset;
-      animation: float 6s ease-in-out infinite;
     }
-    .sc-header {
-      padding:16px 20px;
-      background:rgba(255,255,255,.04);
-      border-bottom:1px solid rgba(255,255,255,.07);
-      display:flex; align-items:center; justify-content:space-between;
+    .marquee-label {
+      text-align:center; font-size:11px; color:var(--text-3);
+      letter-spacing:0.1em; text-transform:uppercase; margin-bottom:16px;
     }
-    .sc-header-left { display:flex; align-items:center; gap:10px; }
-    .sc-logo-dot {
-      width:32px; height:32px; border-radius:8px;
-      background:linear-gradient(135deg,var(--green-mid),var(--green));
-      display:flex; align-items:center; justify-content:center;
-      font-size:16px;
+    .marquee-wrap {
+      overflow:hidden;
+      mask-image:linear-gradient(to right,transparent 0%,black 8%,black 92%,transparent 100%);
+      -webkit-mask-image:linear-gradient(to right,transparent 0%,black 8%,black 92%,transparent 100%);
     }
-    .sc-name { font-size:13px; font-weight:600; color:var(--inv); }
-    .sc-sub  { font-size:11px; color:var(--inv-2); }
-    .sc-status {
-      display:flex; align-items:center; gap:5px;
-      font-size:11px; color:#4ADE80; font-weight:500;
+    .marquee-track {
+      display:flex; width:max-content;
+      animation:marqueeScroll 30s linear infinite;
     }
-    .sc-dot { width:6px;height:6px;border-radius:50%;background:#4ADE80; animation:pulse 2s ease-in-out infinite; }
-
-    .sc-body { padding:20px; }
-
-    /* 4 guarantee stats */
-    .sc-guarantees {
-      display:grid; grid-template-columns:1fr 1fr;
-      gap:10px; margin-bottom:16px;
+    .marquee-track:hover { animation-play-state:paused; }
+    @keyframes marqueeScroll {
+      from { transform:translateX(0); }
+      to   { transform:translateX(-50%); }
     }
-    .sc-guarantee {
-      background:rgba(255,255,255,.05);
-      border:1px solid rgba(255,255,255,.07);
-      border-radius:12px; padding:14px 16px;
-    }
-    .sc-g-val {
-      font-family:var(--ff-head); font-size:26px; font-weight:700;
-      color:var(--amber); line-height:1; margin-bottom:4px;
-    }
-    .sc-g-val.wh { color:var(--inv); }
-    .sc-g-label { font-size:11px; color:var(--inv-2); line-height:1.3; }
-
-    /* machine status row */
-    .sc-machines { display:flex; flex-direction:column; gap:7px; }
-    .sc-machine {
-      display:flex; align-items:center; gap:10px;
-      padding:9px 12px;
-      background:rgba(255,255,255,.03);
-      border:1px solid rgba(255,255,255,.05);
-      border-radius:9px;
-    }
-    .sc-m-dot { width:7px;height:7px;border-radius:50%;flex-shrink:0; }
-    .sc-m-dot.ok  { background:#4ADE80; }
-    .sc-m-dot.low { background:var(--amber); }
-    .sc-m-name { font-size:11px; color:rgba(250,250,248,.65); flex:1; }
-    .sc-m-bar { width:52px;height:4px;border-radius:2px;background:rgba(255,255,255,.1);overflow:hidden; }
-    .sc-m-fill { height:100%;border-radius:2px;background:#4ADE80; }
-    .sc-m-fill.low { background:var(--amber); }
-    .sc-m-pct { font-size:10px; color:var(--inv-2); min-width:28px; text-align:right; }
-
-    /* placeholder note */
-    .hero-img-note {
-      padding:10px 14px;
-      background:rgba(240,165,0,0.1);
-      border:1px dashed rgba(240,165,0,0.3);
-      border-radius:10px;
-      font-size:12px; color:rgba(240,165,0,0.7); text-align:center;
-      line-height:1.5;
+    .marquee-item {
+      display:flex; align-items:center; gap:8px;
+      padding:8px 28px;
+      font-size:13px; color:var(--inv-2);
+      border-right:1px solid var(--border-inv);
+      white-space:nowrap;
     }
 
     /* ═══════════════════════════════
-       CÓMO FUNCIONA
+       STEPS DARK SECTION
     ═══════════════════════════════ */
-    .steps-grid {
+    .steps-dark {
+      background:var(--bg-dark);
+      position:relative; overflow:hidden;
+    }
+    .steps-dark::before {
+      content:'';
+      position:absolute; inset:0;
+      background:radial-gradient(ellipse 70% 60% at 50% 110%, rgba(26,107,82,0.18) 0%, transparent 70%);
+      pointer-events:none;
+    }
+    .step-cards {
       display:grid; grid-template-columns:repeat(4,1fr);
-      gap:2px;
-      background:var(--border);
-      border:1px solid var(--border);
+      gap:10px; margin-top:48px;
+    }
+    .step-card {
+      background:rgba(255,255,255,0.05);
+      border:1px solid rgba(255,255,255,0.09);
       border-radius:var(--r-lg);
-      overflow:hidden;
-      margin-top:52px;
+      padding:28px 22px;
+      display:flex; flex-direction:column;
+      transition:background var(--fast);
+    }
+    .step-card:hover { background:rgba(255,255,255,0.08); }
+    .step-card.accent {
+      background:rgba(240,165,0,0.08);
+      border-color:rgba(240,165,0,0.18);
+    }
+    .step-card-num {
+      font-size:10px; font-weight:600; letter-spacing:0.1em;
+      color:rgba(250,250,248,.3); margin-bottom:20px;
+    }
+    .step-card.accent .step-card-num { color:rgba(240,165,0,.5); }
+    .step-card-icon { font-size:26px; margin-bottom:16px; }
+    .step-card-title {
+      font-family:var(--ff-head); font-size:17px; font-weight:600;
+      color:var(--inv); margin-bottom:10px;
+    }
+    .step-card.accent .step-card-title { color:var(--amber); }
+    .step-card-desc { font-size:13px; color:var(--inv-2); line-height:1.65; }
+
+    /* ═══════════════════════════════
+       BENEFIT SM GRID
+    ═══════════════════════════════ */
+    .benefit-sm-grid {
+      display:grid; grid-template-columns:repeat(3,1fr);
+      gap:12px; margin-top:48px;
+    }
+    .benefit-sm-card {
+      background:var(--bg);
+      border:1px solid var(--border);
+      border-radius:var(--r-md);
+      padding:24px 20px;
+      transition:border-color var(--fast), box-shadow var(--fast);
+    }
+    .benefit-sm-card:hover {
+      border-color:rgba(10,74,56,0.2);
       box-shadow:var(--shadow-sm);
     }
-    .step {
-      background:var(--bg);
-      padding:32px 28px;
-      display:flex; flex-direction:column; gap:0;
-      transition:background var(--fast);
-      position:relative;
-    }
-    .step:hover { background:#F5F7F5; }
-    .step.accent { background:var(--green); }
-    .step.accent:hover { background:var(--green-mid); }
-
-    .step-num {
-      font-family:var(--ff-head);
-      font-size:11px; font-weight:600; letter-spacing:0.08em;
-      color:var(--text-3); margin-bottom:20px;
-    }
-    .step.accent .step-num { color:rgba(250,250,248,.5); }
-
-    .step-icon { font-size:28px; margin-bottom:16px; }
-    .step-title {
-      font-family:var(--ff-head); font-size:17px; font-weight:600;
+    .bsc-icon { font-size:26px; margin-bottom:12px; }
+    .bsc-title {
+      font-family:var(--ff-head); font-size:16px; font-weight:600;
       color:var(--text); margin-bottom:8px;
     }
-    .step.accent .step-title { color:var(--inv); }
-    .step-desc { font-size:13px; color:var(--text-2); line-height:1.6; }
-    .step.accent .step-desc { color:rgba(250,250,248,.65); }
+    .bsc-desc { font-size:13px; color:var(--text-2); line-height:1.6; }
 
     /* ═══════════════════════════════
-       BENEFICIOS — CLEAN GRID
-    ═══════════════════════════════ */
-    .benefits-grid {
-      display:grid; grid-template-columns:repeat(2,1fr);
-      gap:16px; margin-top:52px;
-    }
-    .benefit-card {
-      border-radius:var(--r-md);
-      padding:32px 36px;
-      display:flex; flex-direction:column; gap:0;
-      position:relative; overflow:hidden;
-      transition:transform var(--fast) var(--ease), box-shadow var(--fast) var(--ease);
-      border:1px solid var(--border);
-    }
-    .benefit-card:hover {
-      transform:translateY(-3px);
-      box-shadow:var(--shadow-md);
-    }
-    .bc-light { background:var(--bg); }
-    .bc-dark  { background:var(--green); border-color:transparent; }
-    .bc-surface { background:var(--surface); }
-
-    .bc-stat {
-      font-family:var(--ff-head);
-      font-size:clamp(48px,6vw,72px);
-      font-weight:700; line-height:1; margin-bottom:8px;
-      letter-spacing:-0.02em;
-    }
-    .bc-stat.amber { color:var(--amber); }
-    .bc-stat.inv   { color:var(--inv); }
-    .bc-stat.green { color:var(--green); }
-
-    .bc-title {
-      font-family:var(--ff-head); font-size:19px; font-weight:600;
-      margin-bottom:10px;
-    }
-    .bc-dark .bc-title { color:var(--inv); }
-    .bc-desc { font-size:14px; color:var(--text-2); line-height:1.6; max-width:380px; }
-    .bc-dark .bc-desc { color:rgba(250,250,248,.6); }
-
-    /* decorative circle */
-    .bc-deco {
-      position:absolute; border-radius:50%;
-      opacity:0.08; pointer-events:none;
-    }
-    .bc-dark .bc-deco { background:var(--amber); }
-    .bc-light .bc-deco { background:var(--green); }
-
-    /* portal preview row */
-    .portal-preview {
-      margin-top:16px;
-      border-radius:var(--r-md);
-      background:var(--green);
-      border:1px solid transparent;
-      padding:28px 36px;
-      display:flex; align-items:center; justify-content:space-between; gap:24px;
-      transition:transform var(--fast) var(--ease), box-shadow var(--fast) var(--ease);
-    }
-    .portal-preview:hover { transform:translateY(-2px); box-shadow:var(--shadow-md); }
-    .portal-preview-text h3 { font-family:var(--ff-head); font-size:20px; font-weight:600; color:var(--inv); margin-bottom:6px; }
-    .portal-preview-text p  { font-size:14px; color:rgba(250,250,248,.6); }
-    .portal-stats { display:flex; gap:28px; flex-shrink:0; }
-    .portal-stat-val { font-family:var(--ff-head); font-size:26px; font-weight:700; color:var(--amber); line-height:1; }
-    .portal-stat-label { font-size:11px; color:rgba(250,250,248,.5); margin-top:3px; }
-
-    /* ═══════════════════════════════
-       COMPARACIÓN (por qué nosotros)
+       COMPARACIÓN
     ═══════════════════════════════ */
     .compare-table {
       margin-top:52px;
@@ -560,6 +467,16 @@
     .cr-label { padding:16px 24px; font-size:14px; color:var(--text); border-right:1px solid var(--border); background:var(--bg); }
     .cr-check { padding:16px 24px; text-align:center; font-size:16px; background:rgba(10,74,56,0.04); }
     .cr-x     { padding:16px 24px; text-align:center; font-size:16px; color:var(--text-3); background:var(--bg); border-left:1px solid var(--border); }
+
+    /* compare pills — desktop hidden, mobile shown */
+    .compare-pills { display:none; flex-wrap:wrap; gap:10px; margin-top:36px; }
+    .compare-pill {
+      padding:10px 16px;
+      background:rgba(10,74,56,0.07);
+      border:1px solid rgba(10,74,56,0.15);
+      border-radius:999px;
+      font-size:14px; font-weight:500; color:var(--green);
+    }
 
     /* ═══════════════════════════════
        CALCULADORA
@@ -607,23 +524,6 @@
       background:linear-gradient(145deg, var(--green) 0%, #0F5C44 100%);
       padding:28px 36px; color:var(--inv);
     }
-    .calc-partial h3 {
-      font-family:var(--ff-head); font-size:21px; font-weight:600; margin-bottom:6px;
-    }
-    .calc-partial h3 em { font-style:normal; color:var(--amber); }
-    .calc-partial p { font-size:14px; color:var(--inv-2); margin-bottom:20px; }
-
-    .gate-fields { display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-bottom:10px; }
-    .gate-input {
-      width:100%; padding:11px 14px;
-      border:1.5px solid rgba(255,255,255,.18);
-      border-radius:var(--r-sm);
-      background:rgba(255,255,255,.09);
-      color:var(--inv); font-size:15px;
-    }
-    .gate-input::placeholder { color:rgba(250,250,248,.38); }
-    .gate-input:focus { outline:none; border-color:var(--amber); }
-    .gate-label { font-size:12px; color:var(--inv-2); margin-bottom:10px; }
 
     .full-result { display:none; flex-direction:column; gap:2px; }
     .full-result.show { display:flex; }
@@ -637,12 +537,6 @@
     .r-val { font-weight:600; }
     .r-green  { color:#4ADE80; }
     .r-amber  { color:var(--amber); }
-
-    .calc-footer {
-      padding:16px 36px; font-size:12px; color:var(--text-3);
-      background:var(--surface); border-top:1px solid var(--border); line-height:1.6;
-    }
-    .assumptions-btn { font-size:12px;color:var(--inv-2);text-decoration:underline;cursor:pointer;background:none;border:none;font-family:inherit;margin-top:8px; }
 
     /* ═══════════════════════════════
        CLIENTES / SOCIAL PROOF
@@ -672,7 +566,7 @@
     .tcard {
       background:rgba(255,255,255,.05);
       border:1px solid rgba(255,255,255,.09);
-      border-radius:var(--r-md); padding:28px;
+      border-radius:var(--r-md); padding:22px;
       display:flex; flex-direction:column; gap:20px;
       transition:background var(--fast);
     }
@@ -775,7 +669,6 @@
       margin-top:16px; text-align:center;
       font-size:14px; color:var(--inv-2);
     }
-    .form-alt a { color:#25D366; text-decoration:underline; }
 
     /* ═══════════════════════════════
        FOOTER
@@ -860,12 +753,9 @@
     @media (max-width:1024px) {
       .hero-inner { grid-template-columns:1fr; gap:40px; }
       .hero { min-height:auto; padding-top:96px; }
-      /* texto primero — visual debajo */
       .hero-text { text-align:center; align-items:center; }
       .hero-sub   { margin-left:auto; margin-right:auto; }
       .hero-ctas  { justify-content:center; }
-      .hero-sectors { align-items:center; }
-      .hero-sectors-row { justify-content:center; }
       .ph-grid { grid-template-columns:1fr 1fr; }
     }
 
@@ -881,66 +771,37 @@
       }
       .hero-ctas .btn { justify-content: center; }
       .hero-link { justify-content: center; }
-      .sc-guarantees { grid-template-columns:1fr 1fr; }
 
-      /* pasos → scroll horizontal */
-      .steps-grid {
-        display: flex;
-        grid-template-columns: none;
-        overflow-x: auto;
-        scroll-snap-type: x mandatory;
-        -webkit-overflow-scrolling: touch;
-        scrollbar-width: none;
-        gap: 10px;
-        background: transparent; border: none;
-        border-radius: 0; box-shadow: none;
-        margin-left: -20px; margin-right: -20px;
-        padding-left: 20px; padding-right: 20px;
-        padding-bottom: 16px;
-        margin-top: 36px;
+      /* step-cards mobile → horizontal scroll, 1 card + peek */
+      .step-cards {
+        display:flex;
+        grid-template-columns:none;
+        overflow-x:auto;
+        scroll-snap-type:x mandatory;
+        -webkit-overflow-scrolling:touch;
+        scrollbar-width:none;
+        gap:10px;
+        margin-left:-20px; margin-right:-20px;
+        padding-left:20px; padding-right:20px;
+        padding-bottom:16px;
+        margin-top:36px;
       }
-      .steps-grid::-webkit-scrollbar { display:none; }
-      .step {
-        min-width: 168px; max-width: 168px; flex-shrink: 0;
-        scroll-snap-align: start;
-        border-radius: var(--r-md);
-        border: 1px solid var(--border);
-      }
-      .step.accent { border-color: transparent; }
-
-      /* compare table → solo 2 columnas en mobile (label + VendingSion) */
-      .compare-table { overflow: visible; box-shadow: none; }
-      .compare-head  { grid-template-columns: 1fr 88px; }
-      .compare-row   { grid-template-columns: 1fr 88px; }
-      .ch-cell.bad   { display: none; }
-      .cr-x          { display: none; }
-      .ch-cell.good  { border-radius: 0 var(--r-sm) 0 0; }
-
-      /* beneficios → scroll horizontal */
-      .benefits-grid {
-        display: flex;
-        grid-template-columns: none;
-        overflow-x: auto;
-        scroll-snap-type: x mandatory;
-        -webkit-overflow-scrolling: touch;
-        scrollbar-width: none;
-        gap: 10px;
-        margin-left: -20px; margin-right: -20px;
-        padding-left: 20px; padding-right: 20px;
-        padding-bottom: 16px;
-        margin-top: 36px;
-      }
-      .benefits-grid::-webkit-scrollbar { display:none; }
-      .benefit-card {
-        min-width: 200px; max-width: 200px; flex-shrink: 0;
-        scroll-snap-align: start;
+      .step-cards::-webkit-scrollbar { display:none; }
+      .step-card {
+        min-width:calc(100vw - 56px);
+        max-width:calc(100vw - 56px);
+        flex-shrink:0;
+        scroll-snap-align:start;
       }
 
-      /* portal preview */
-      .portal-preview { flex-direction:column; align-items:flex-start; gap:16px; }
-      .portal-stats { gap:20px; }
+      /* compare table → pills on mobile */
+      .compare-table { display:none; }
+      .compare-pills { display:flex; }
 
-      /* métricas — se mantienen horizontales, padding reducido */
+      /* benefit-sm-grid → 2 col */
+      .benefit-sm-grid { grid-template-columns:1fr 1fr; gap:10px; }
+
+      /* métricas */
       .metrics-row { border-radius:var(--r-md); }
       .metric-cell { padding:24px 10px; }
       .metric-val  { font-size:clamp(30px, 9vw, 48px); }
@@ -969,13 +830,12 @@
       .ph-grid { grid-template-columns:1fr; gap:10px; }
 
       /* form / footer */
-      .gate-fields { grid-template-columns:1fr; }
       .form-row    { grid-template-columns:1fr; }
       .footer-top  { flex-direction:column; }
     }
 
     @media (max-width:480px) {
-      .hero-sectors-row { gap:6px; }
+      .benefit-sm-grid { grid-template-columns:1fr; }
       .compare-head,
       .compare-row { grid-template-columns: 140px 88px 88px; }
     }
@@ -1026,131 +886,98 @@
           </p>
           <div class="hero-ctas">
             <a href="#cotizar" class="btn btn-amber">Solicitar cotización <span class="arr">→</span></a>
-            <a href="#como-funciona" class="hero-link">Ver cómo funciona ↓</a>
-          </div>
-          <div class="hero-sectors">
-            <span class="hero-sectors-label">Presente en</span>
-            <div class="hero-sectors-row">
-              <span class="sector-tag">🏢 Sector corporativo</span>
-              <span class="sector-tag">🏥 Sector salud</span>
-              <span class="sector-tag">🎓 Universidades</span>
-              <span class="sector-tag">🏭 Plantas industriales</span>
-            </div>
+            <a href="#como-funciona" class="hero-link">Cómo funciona ↓</a>
           </div>
         </div>
 
         <div class="hero-visual">
-          <!-- Service summary card -->
-          <div class="service-card">
-            <div class="sc-header">
-              <div class="sc-header-left">
-                <div class="sc-logo-dot">🏪</div>
-                <div>
-                  <div class="sc-name">VendingSion</div>
-                  <div class="sc-sub">Tu espacio · Gestión completa</div>
-                </div>
-              </div>
-              <div class="sc-status">
-                <div class="sc-dot"></div> Operando
-              </div>
-            </div>
-            <div class="sc-body">
-              <!-- 4 key guarantees -->
-              <div class="sc-guarantees">
-                <div class="sc-guarantee">
-                  <div class="sc-g-val">$0</div>
-                  <div class="sc-g-label">Inversión inicial para tu empresa</div>
-                </div>
-                <div class="sc-guarantee">
-                  <div class="sc-g-val wh">48h</div>
-                  <div class="sc-g-label">Desde el acuerdo hasta operar</div>
-                </div>
-                <div class="sc-guarantee">
-                  <div class="sc-g-val">24/7</div>
-                  <div class="sc-g-label">Disponible para tu equipo</div>
-                </div>
-                <div class="sc-guarantee">
-                  <div class="sc-g-val wh">100%</div>
-                  <div class="sc-g-label">Gestionado por VendingSion</div>
-                </div>
-              </div>
-              <!-- Machines status -->
-              <div class="sc-machines">
-                <div class="sc-machine">
-                  <div class="sc-m-dot ok"></div>
-                  <span class="sc-m-name">Empresa de tecnología · Lobby</span>
-                  <div class="sc-m-bar"><div class="sc-m-fill" style="width:82%"></div></div>
-                  <span class="sc-m-pct">82%</span>
-                </div>
-                <div class="sc-machine">
-                  <div class="sc-m-dot ok"></div>
-                  <span class="sc-m-name">Clínica privada · Piso 1</span>
-                  <div class="sc-m-bar"><div class="sc-m-fill" style="width:65%"></div></div>
-                  <span class="sc-m-pct">65%</span>
-                </div>
-                <div class="sc-machine">
-                  <div class="sc-m-dot low"></div>
-                  <span class="sc-m-name">Universidad · Bloque B</span>
-                  <div class="sc-m-bar"><div class="sc-m-fill low" style="width:18%"></div></div>
-                  <span class="sc-m-pct">18%</span>
-                </div>
-              </div>
-            </div>
-          </div>
-          <!-- Placeholder foto máquina real -->
-          <div class="ph-img tall" style="border-color:rgba(255,255,255,0.12);background:rgba(255,255,255,0.04);color:rgba(250,250,248,0.4);">
+          <div class="ph-img tall" style="border-color:rgba(255,255,255,0.12);background:rgba(255,255,255,0.04);color:rgba(250,250,248,0.4);min-height:380px;">
             <div class="ph-img-icon">📸</div>
-            <strong style="color:rgba(250,250,248,0.5);">Foto real de tu máquina</strong>
-            <span>Envíanos una imagen de tu instalación<br>para publicarla aquí</span>
+            <strong style="color:rgba(250,250,248,0.5);">Foto real de tu máquina instalada</strong>
+            <span>Envíanos una imagen de tu instalación para publicarla aquí</span>
           </div>
         </div>
 
       </div>
     </section>
 
+    <!-- MARQUEE CLIENTES -->
+    <div class="marquee-section">
+      <p class="marquee-label">Nuestros clientes</p>
+      <div class="marquee-wrap">
+        <div class="marquee-track">
+          <!-- 8 items duplicated for seamless loop -->
+          <div class="marquee-item"><span>🏢</span> Empresa tecnológica · 200 personas</div>
+          <div class="marquee-item"><span>🏥</span> Clínica privada · 350 personas</div>
+          <div class="marquee-item"><span>🎓</span> Universidad · Bloque central</div>
+          <div class="marquee-item"><span>🏭</span> Planta industrial · 3 turnos</div>
+          <div class="marquee-item"><span>🏢</span> Firma de consultoría · 80 personas</div>
+          <div class="marquee-item"><span>🏥</span> Centro médico · 24/7</div>
+          <div class="marquee-item"><span>🎓</span> Instituto de formación · 500 estudiantes</div>
+          <div class="marquee-item"><span>🏭</span> Manufactura · turno nocturno</div>
+          <!-- duplicate for loop -->
+          <div class="marquee-item"><span>🏢</span> Empresa tecnológica · 200 personas</div>
+          <div class="marquee-item"><span>🏥</span> Clínica privada · 350 personas</div>
+          <div class="marquee-item"><span>🎓</span> Universidad · Bloque central</div>
+          <div class="marquee-item"><span>🏭</span> Planta industrial · 3 turnos</div>
+          <div class="marquee-item"><span>🏢</span> Firma de consultoría · 80 personas</div>
+          <div class="marquee-item"><span>🏥</span> Centro médico · 24/7</div>
+          <div class="marquee-item"><span>🎓</span> Instituto de formación · 500 estudiantes</div>
+          <div class="marquee-item"><span>🏭</span> Manufactura · turno nocturno</div>
+        </div>
+      </div>
+    </div>
+
     <!-- ════════════════════ CÓMO FUNCIONA ════════════════════ -->
-    <section class="section" id="como-funciona" style="scroll-margin-top:66px">
-      <div class="wrap">
+    <section class="section steps-dark" id="como-funciona" style="scroll-margin-top:66px">
+      <div class="wrap" style="position:relative;z-index:1;">
         <div style="text-align:center;" data-a>
-          <div class="pill pill-green" style="margin-bottom:16px;">El proceso</div>
-          <h2 class="h2">¿Qué tienes que hacer tú?</h2>
-          <p style="color:var(--text-2);font-size:17px;margin-top:12px;max-width:480px;margin-left:auto;margin-right:auto;">
+          <div class="pill pill-inv" style="margin-bottom:16px;">El proceso</div>
+          <h2 class="h2" style="color:var(--inv);">¿Qué tienes que hacer tú?</h2>
+          <p style="color:var(--inv-2);font-size:17px;margin-top:12px;max-width:480px;margin-left:auto;margin-right:auto;">
             Nada. Así de simple funciona el modelo VendingSion.
           </p>
         </div>
-        <div class="steps-grid" data-a data-d="1">
-          <div class="step">
-            <span class="step-num">PASO 01</span>
-            <span class="step-icon">📞</span>
-            <div class="step-title">Nos cotizas</div>
-            <p class="step-desc">Cuéntanos cuántas personas trabajan en tu espacio. Te respondemos con una propuesta en menos de 24 horas.</p>
+        <div class="step-cards" data-a data-d="1">
+          <div class="step-card">
+            <span class="step-card-num">PASO 01</span>
+            <span class="step-card-icon">📞</span>
+            <div class="step-card-title">Nos cotizas</div>
+            <p class="step-card-desc">Cuéntanos cuántas personas trabajan en tu espacio. Te respondemos con una propuesta en menos de 24 horas.</p>
           </div>
-          <div class="step">
-            <span class="step-num">PASO 02</span>
-            <span class="step-icon">🔍</span>
-            <div class="step-title">Visitamos y diseñamos</div>
-            <p class="step-desc">Evaluamos tu espacio sin costo. Definimos el mix de productos ideal según el perfil de tu equipo.</p>
+          <div class="step-card">
+            <span class="step-card-num">PASO 02</span>
+            <span class="step-card-icon">🔍</span>
+            <div class="step-card-title">Visitamos y diseñamos</div>
+            <p class="step-card-desc">Evaluamos tu espacio sin costo. Definimos el mix de productos ideal según el perfil de tu equipo.</p>
           </div>
-          <div class="step">
-            <span class="step-num">PASO 03</span>
-            <span class="step-icon">⚡</span>
-            <div class="step-title">Instalamos en 48h</div>
-            <p class="step-desc">Máquina y productos listos en 48 horas hábiles. Sin obras, sin gestión de tu parte, sin costos ocultos.</p>
+          <div class="step-card">
+            <span class="step-card-num">PASO 03</span>
+            <span class="step-card-icon">⚡</span>
+            <div class="step-card-title">Instalamos en 48h</div>
+            <p class="step-card-desc">Máquina y productos listos en 48 horas hábiles. Sin obras, sin gestión de tu parte, sin costos ocultos.</p>
           </div>
-          <div class="step accent">
-            <span class="step-num">PASO 04</span>
-            <span class="step-icon">✨</span>
-            <div class="step-title">Nosotros operamos todo</div>
-            <p class="step-desc">Reposición automática, mantenimiento técnico, reportes mensuales. Tú no haces nada — ese es el punto.</p>
+          <div class="step-card accent">
+            <span class="step-card-num">PASO 04</span>
+            <span class="step-card-icon">✨</span>
+            <div class="step-card-title">Nosotros operamos todo</div>
+            <p class="step-card-desc">Reposición automática, mantenimiento técnico, reportes mensuales. Tú no haces nada — ese es el punto.</p>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- ════════════════════ FOTOS ════════════════════ -->
-    <section style="padding:0 0 var(--section-py);background:var(--bg);">
+    <!-- ════════════════════ GALERÍA / CONTEXTO ════════════════════ -->
+    <section style="padding:var(--section-py) 0;background:var(--bg);">
       <div class="wrap">
-        <div class="ph-grid" data-a>
+        <div style="text-align:center;max-width:560px;margin:0 auto 52px;" data-a>
+          <div class="pill pill-green" style="margin-bottom:16px;">En tu espacio</div>
+          <h2 class="h2">Así luce el servicio<br>en la práctica</h2>
+          <p style="color:var(--text-2);font-size:16px;margin-top:12px;">
+            Cada instalación se adapta al espacio de tu empresa. Sin obras, sin branding impuesto, sin complejidad.
+          </p>
+        </div>
+        <div class="ph-grid" data-a data-d="1">
           <div class="ph-img tall">
             <div class="ph-img-icon">🏢</div>
             <strong>Máquina en oficina</strong>
@@ -1214,78 +1041,68 @@
             <div class="cr-x">Según disponibilidad</div>
           </div>
         </div>
+        <!-- Mobile: feature pills (compare-table hidden on mobile) -->
+        <div class="compare-pills" data-a data-d="1">
+          <div class="compare-pill">✓ $0 de inversión inicial</div>
+          <div class="compare-pill">✓ Mix de productos personalizado</div>
+          <div class="compare-pill">✓ Sin ataduras a marcas</div>
+          <div class="compare-pill">✓ Reposición automática</div>
+          <div class="compare-pill">✓ Portal digital en tiempo real</div>
+          <div class="compare-pill">✓ Respuesta ante fallas en 24h</div>
+        </div>
       </div>
     </section>
 
     <!-- ════════════════════ BENEFICIOS ════════════════════ -->
-    <section class="section" id="beneficios" style="scroll-margin-top:66px">
+    <section class="section" id="beneficios" style="background:var(--surface);scroll-margin-top:66px">
       <div class="wrap">
-        <div style="text-align:center;" data-a>
+        <div style="text-align:center;max-width:600px;margin:0 auto;" data-a>
           <div class="pill pill-green" style="margin-bottom:16px;">Lo que incluye el servicio</div>
-          <h2 class="h2">Todo incluido. Sin sorpresas.</h2>
+          <h2 class="h2">Todo lo que tu equipo necesita,<br>sin lo que no quieres cargar.</h2>
+          <p style="color:var(--text-2);font-size:16px;margin-top:12px;">Sin ataduras de marca. Solo la experiencia que tu equipo merece, en constante evolución.</p>
         </div>
-        <div class="benefits-grid" data-a data-d="1">
-          <!-- Card 1: $0 inversión -->
-          <div class="benefit-card bc-dark">
-            <div class="bc-deco" style="width:240px;height:240px;top:-60px;right:-60px;"></div>
-            <div class="bc-stat amber">$0</div>
-            <div class="bc-title">Inversión inicial</div>
-            <p class="bc-desc">La máquina, la instalación, los productos y el mantenimiento son de VendingSion. Tu empresa no pone un peso.</p>
+        <div class="benefit-sm-grid" data-a data-d="1">
+          <div class="benefit-sm-card">
+            <div class="bsc-icon">🏷️</div>
+            <div class="bsc-title">Cero inversión</div>
+            <p class="bsc-desc">La máquina, la instalación y los productos son nuestros. Tu empresa no pone un peso.</p>
           </div>
-          <!-- Card 2: 48h -->
-          <div class="benefit-card bc-light">
-            <div class="bc-deco" style="width:180px;height:180px;bottom:-40px;right:-40px;"></div>
-            <div class="bc-stat green">48h</div>
-            <div class="bc-title">De acuerdo a máquina operando</div>
-            <p class="bc-desc">Sin obras, sin trámites. En 48 horas hábiles tu equipo ya tiene acceso al servicio.</p>
+          <div class="benefit-sm-card">
+            <div class="bsc-icon">🔄</div>
+            <div class="bsc-title">Siempre abastecida</div>
+            <p class="bsc-desc">Monitoreamos el stock en tiempo real. Reponemos antes de que se acabe, sin que tengas que avisar.</p>
           </div>
-          <!-- Card 3: 24/7 -->
-          <div class="benefit-card bc-surface">
-            <div class="bc-stat green">24/7</div>
-            <div class="bc-title">Disponible siempre</div>
-            <p class="bc-desc">Incluso fines de semana y festivos. Ideal para hospitales, plantas y equipos en turno extendido.</p>
+          <div class="benefit-sm-card">
+            <div class="bsc-icon">🎨</div>
+            <div class="bsc-title">Mix personalizado</div>
+            <p class="bsc-desc">No estamos atados a ninguna marca. El surtido evoluciona con los hábitos reales de tu equipo.</p>
           </div>
-          <!-- Card 4: 100% gestionado -->
-          <div class="benefit-card bc-light">
-            <div class="bc-stat green">100%</div>
-            <div class="bc-title">Gestionado por nosotros</div>
-            <p class="bc-desc">Reposición automática, mantenimiento preventivo y correctivo, reportes mensuales. Tú no operas nada.</p>
+          <div class="benefit-sm-card">
+            <div class="bsc-icon">🛠️</div>
+            <div class="bsc-title">Mantenimiento incluido</div>
+            <p class="bsc-desc">Si algo falla, estamos allí antes de que lo notes. Respuesta garantizada en menos de 24 horas.</p>
           </div>
-        </div>
-        <!-- Placeholder máquina en planta / hospital -->
-        <div class="ph-img short" style="margin-top:16px;width:100%;" data-a data-d="2">
-          <div class="ph-img-icon">🏭</div>
-          <strong>Tu máquina en acción</strong>
-          <span>Foto del equipo usando el servicio — en oficina, planta u hospital</span>
-        </div>
-
-        <!-- Portal preview strip -->
-        <div class="portal-preview" data-a data-d="3">
-          <div class="portal-preview-text">
-            <h3>Portal digital incluido para tu empresa</h3>
-            <p>Ventas, stock, transacciones y reportes descargables — en tiempo real, desde cualquier dispositivo.</p>
+          <div class="benefit-sm-card">
+            <div class="bsc-icon">📊</div>
+            <div class="bsc-title">Visibilidad total</div>
+            <p class="bsc-desc">Tu empresa puede ver ventas, stock y reportes en tiempo real, sin tener que gestionar nada.</p>
           </div>
-          <div class="portal-stats">
-            <div>
-              <div class="portal-stat-val">4.9★</div>
-              <div class="portal-stat-label">Satisfacción promedio</div>
-            </div>
-            <div>
-              <div class="portal-stat-val">98%</div>
-              <div class="portal-stat-label">Disponibilidad</div>
-            </div>
+          <div class="benefit-sm-card">
+            <div class="bsc-icon">💳</div>
+            <div class="bsc-title">Múltiples medios de pago</div>
+            <p class="bsc-desc">Efectivo, tarjeta, Nequi, Daviplata. Para todos en tu equipo, sin excepción.</p>
           </div>
         </div>
       </div>
     </section>
 
     <!-- ════════════════════ CALCULADORA ════════════════════ -->
-    <section class="section" style="background:var(--surface);scroll-margin-top:66px" id="calculadora">
+    <section class="section" style="background:var(--bg);scroll-margin-top:66px" id="calculadora">
       <div class="wrap">
         <div class="calc-wrap">
           <div style="text-align:center;" data-a>
             <div class="pill pill-green" style="margin-bottom:16px;">Calcula el impacto</div>
-            <h2 class="h2">¿Cuánto le cuesta a tu empresa<br>no tener este servicio?</h2>
+            <h2 class="h2">¿Cuánto podría usar tu equipo<br>el servicio?</h2>
             <p style="color:var(--text-2);font-size:16px;margin-top:12px;">Ajusta los datos y ve el beneficio estimado para tu equipo.</p>
           </div>
           <div class="calc-card" data-a data-d="1">
@@ -1308,55 +1125,27 @@
                   <option value="planta">Planta industrial</option>
                 </select>
               </div>
-              <!-- Solución actual -->
-              <div class="calc-field">
-                <label for="cActual">Solución actual de refrigerios</label>
-                <select class="calc-select" id="cActual" onchange="calcUpdate()">
-                  <option value="nada">Ninguna — salen del edificio</option>
-                  <option value="cafeteria">Cafetería propia</option>
-                  <option value="externo">Servicio externo / catering</option>
-                  <option value="domicilios">Domicilios frecuentes</option>
-                </select>
-              </div>
             </div>
 
             <!-- Resultado -->
             <div class="calc-result">
-              <div class="calc-partial" id="cPartial">
-                <h3>Con <em id="cEmpD">150</em> empleados, estimamos entre <em id="cLo">210</em> y <em id="cHi">290</em> visitas/mes a la máquina.</h3>
-                <p>Ingresa tu nombre y WhatsApp para ver el análisis completo del beneficio — sin costo.</p>
-                <p class="gate-label">Ver análisis completo (gratis):</p>
-                <div class="gate-fields">
-                  <input type="text" class="gate-input" id="gNombre" placeholder="Tu nombre" />
-                  <input type="tel"  class="gate-input" id="gWA"     placeholder="WhatsApp (+57...)" />
-                </div>
-                <button class="btn btn-amber" onclick="calcUnlock()" style="width:100%;justify-content:center;">
-                  Ver mi análisis <span class="arr">→</span>
-                </button>
+              <h3 id="cResultTitle" style="font-family:var(--ff-head);font-size:20px;font-weight:600;margin-bottom:16px;">
+                Con <em id="cEmpD" style="font-style:normal;color:var(--amber);">150</em> empleados, estimamos
+                entre <em id="cLo" style="font-style:normal;color:var(--amber);">210</em> y
+                <em id="cHi" style="font-style:normal;color:var(--amber);">290</em> visitas/mes.
+              </h3>
+              <div class="full-result show">
+                <div class="result-row"><span class="r-label">Disponibilidad del servicio</span><span class="r-val r-green">24/7 — sin interrupciones</span></div>
+                <div class="result-row"><span class="r-label">Costo de instalación para tu empresa</span><span class="r-val r-green">$0</span></div>
+                <div class="result-row"><span class="r-label">Costo de reposición para tu empresa</span><span class="r-val r-green">$0</span></div>
+                <div class="result-row"><span class="r-label">Costo de mantenimiento para tu empresa</span><span class="r-val r-green">$0</span></div>
+                <div class="result-row"><span class="r-label">Tiempo de gestión requerido de tu parte</span><span class="r-val r-green">Ninguno</span></div>
               </div>
-
-              <div class="full-result" id="cFull">
-                <div class="result-row"><span class="r-label">Visitas estimadas al mes</span><span class="r-val r-amber" id="rVisitas">~250 visitas</span></div>
-                <div class="result-row"><span class="r-label">Disponibilidad</span><span class="r-val r-green">24/7 — sin excepciones</span></div>
-                <div class="result-row"><span class="r-label">Costo de instalación</span><span class="r-val r-green">$0</span></div>
-                <div class="result-row"><span class="r-label">Costo de reposición</span><span class="r-val r-green">$0</span></div>
-                <div class="result-row"><span class="r-label">Costo de mantenimiento</span><span class="r-val r-green">$0</span></div>
-                <div class="result-row"><span class="r-label">Ahorro estimado vs. situación actual *</span><span class="r-val r-amber" id="rAhorro">~$1.800.000/mes</span></div>
-                <div class="result-row"><span class="r-label">Tiempo de gestión recuperado</span><span class="r-val" id="rHoras">~8 h/mes</span></div>
-                <a href="#cotizar" class="btn btn-amber" style="width:100%;justify-content:center;margin-top:16px;">
-                  Agendar visita gratuita <span class="arr">→</span>
-                </a>
-                <p style="font-size:11px;color:rgba(250,250,248,.38);margin-top:10px;">* Comparado con promedio de tu situación actual en Bogotá. Los resultados varían por caso.</p>
-              </div>
-
-              <button class="assumptions-btn" onclick="toggleAssum()">¿Cómo calculamos esto?</button>
-              <div id="assum" style="display:none;font-size:12px;color:rgba(250,250,248,.5);margin-top:8px;line-height:1.7;">
-                Tasas conservadoras (percentil 40 de clientes): oficinas 35%, hospitales 28%, universidades 45%, plantas 40%. Ticket promedio real por segmento. Ahorro calculado versus costo promedio de tu solución declarada en Bogotá.
-              </div>
-            </div>
-
-            <div class="calc-footer">
-              Estimaciones basadas en el promedio conservador de nuestra operación. Los resultados reales varían. Esta calculadora no es una oferta comercial — agenda una visita gratuita para cifras exactas a tu caso.
+              <a href="https://wa.me/573043717505?text=Hola%20VendingSion%2C%20quiero%20una%20cotizaci%C3%B3n%20para%20mi%20empresa"
+                 class="btn btn-amber" style="width:100%;justify-content:center;margin-top:20px;">
+                Hablemos de tu caso <span class="arr">→</span>
+              </a>
+              <p style="font-size:11px;color:rgba(250,250,248,.35);margin-top:10px;text-align:center;">Estimaciones conservadoras. Los resultados varían por caso.</p>
             </div>
           </div>
         </div>
@@ -1577,9 +1366,9 @@
         </div>
 
         <div class="form-alt">
-          O escríbenos directo:
-          <a href="https://wa.me/573043717505?text=Hola%20VendingSion%2C%20quiero%20información%20sobre%20sus%20máquinas%20para%20mi%20empresa" target="_blank" rel="noopener">
-            WhatsApp (+57 304 3717505) →
+          <a href="https://wa.me/573043717505?text=Hola%20VendingSion%2C%20quiero%20informaci%C3%B3n%20sobre%20sus%20m%C3%A1quinas"
+             class="btn btn-wa" style="margin-top:4px;">
+            Escribirnos por WhatsApp →
           </a>
         </div>
       </div>
@@ -1655,11 +1444,7 @@
 
     /* CALCULADORA */
     const S = {
-      tasa:   {oficina:.35,hospital:.28,universidad:.45,planta:.40},
-      ticket: {oficina:4800,hospital:4200,universidad:3900,planta:5100},
-      base:   {nada:0,cafeteria:8000000,externo:5200000,domicilios:3500000},
-      factor: {nada:0,cafeteria:.60,externo:.35,domicilios:.25},
-      horas:  {nada:0,cafeteria:18,externo:8,domicilios:4}
+      tasa:   {oficina:.35,hospital:.28,universidad:.45,planta:.40}
     };
 
     function calcUpdate() {
@@ -1673,34 +1458,6 @@
       document.getElementById('cHi').textContent     = Math.round(base*1.18).toLocaleString('es-CO');
       const pct = ((emp-10)/(2000-10))*100;
       document.getElementById('cEmp').style.setProperty('--pct', pct+'%');
-      if(document.getElementById('cFull').classList.contains('show')) renderFull(emp, tipo);
-    }
-
-    function renderFull(emp, tipo) {
-      const actual  = document.getElementById('cActual').value;
-      const base    = Math.round(emp * S.tasa[tipo] * 1.8 * 4.3);
-      const ahorro  = Math.round(S.base[actual] * S.factor[actual]);
-      const horas   = S.horas[actual];
-      document.getElementById('rVisitas').textContent = '~'+base.toLocaleString('es-CO')+' visitas';
-      document.getElementById('rAhorro').textContent  = ahorro > 0 ? '~$'+ahorro.toLocaleString('es-CO')+'/mes' : 'Beneficio nuevo para tu equipo';
-      document.getElementById('rHoras').textContent   = horas > 0 ? '~'+horas+' h/mes' : 'N/A';
-    }
-
-    function calcUnlock() {
-      const n = document.getElementById('gNombre').value.trim();
-      const w = document.getElementById('gWA').value.trim();
-      if(!n||!w){ alert('Por favor ingresa tu nombre y WhatsApp.'); return; }
-      const emp=+document.getElementById('cEmp').value, tipo=document.getElementById('cTipo').value;
-      renderFull(emp,tipo);
-      document.getElementById('cPartial').style.display='none';
-      document.getElementById('cFull').classList.add('show');
-      const msg = encodeURIComponent(`Hola VendingSion, soy ${n}. Usé la calculadora para mi empresa con ${emp} empleados (${tipo}). Quiero más información.`);
-      setTimeout(() => window.open('https://wa.me/573043717505?text='+msg,'_blank'), 1200);
-    }
-
-    function toggleAssum() {
-      const el = document.getElementById('assum');
-      el.style.display = el.style.display==='none' ? 'block' : 'none';
     }
 
     /* FORM */
