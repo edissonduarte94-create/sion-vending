@@ -828,42 +828,153 @@
     .wa-float:hover { transform:scale(1.1); }
 
     /* ═══════════════════════════════
+       PLACEHOLDER IMAGES
+    ═══════════════════════════════ */
+    .ph-img {
+      border-radius: var(--r-md);
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center; gap: 10px;
+      padding: 40px 24px; text-align: center;
+      background: var(--surface);
+      border: 2px dashed rgba(10,74,56,0.15);
+      color: var(--text-3); font-size: 13px; line-height: 1.6;
+    }
+    .ph-img.dark {
+      background: rgba(255,255,255,0.04);
+      border-color: rgba(255,255,255,0.12);
+      color: var(--inv-2);
+    }
+    .ph-img-icon { font-size: 30px; opacity: 0.45; }
+    .ph-img strong { font-weight: 600; font-size: 12px; letter-spacing: 0.05em; text-transform: uppercase; }
+    .ph-img.tall   { min-height: 260px; }
+    .ph-img.short  { min-height: 140px; }
+
+    .ph-grid {
+      display: grid; grid-template-columns: repeat(3,1fr);
+      gap: 12px; margin-top: 52px;
+    }
+
+    /* ═══════════════════════════════
        RESPONSIVE
     ═══════════════════════════════ */
     @media (max-width:1024px) {
-      .hero-inner { grid-template-columns:1fr; gap:48px; }
+      .hero-inner { grid-template-columns:1fr; gap:40px; }
       .hero { min-height:auto; padding-top:96px; }
-      .hero-visual { order:-1; }
-      .testimonials { grid-template-columns:1fr 1fr; }
+      /* texto primero — visual debajo */
+      .hero-text { text-align:center; align-items:center; }
+      .hero-sub   { margin-left:auto; margin-right:auto; }
+      .hero-ctas  { justify-content:center; }
+      .hero-sectors { align-items:center; }
+      .hero-sectors-row { justify-content:center; }
+      .ph-grid { grid-template-columns:1fr 1fr; }
     }
+
     @media (max-width:768px) {
       .nav-links, .nav > .btn { display:none; }
       .nav-ham { display:flex; }
       .wa-float { display:flex; }
 
-      .hero { padding:88px 20px 60px; }
-      .hero-ctas { flex-direction:column; align-items:flex-start; }
+      /* hero */
+      .hero { padding:80px 20px 56px; }
+      .hero-ctas {
+        flex-direction: column; align-items: stretch; width: 100%;
+      }
+      .hero-ctas .btn { justify-content: center; }
+      .hero-link { justify-content: center; }
       .sc-guarantees { grid-template-columns:1fr 1fr; }
 
-      .steps-grid { grid-template-columns:1fr 1fr; }
-      .benefits-grid { grid-template-columns:1fr; }
-      .portal-preview { flex-direction:column; align-items:flex-start; }
+      /* pasos → scroll horizontal */
+      .steps-grid {
+        display: flex;
+        grid-template-columns: none;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+        gap: 10px;
+        background: transparent; border: none;
+        border-radius: 0; box-shadow: none;
+        margin-left: -20px; margin-right: -20px;
+        padding-left: 20px; padding-right: 20px;
+        padding-bottom: 16px;
+        margin-top: 36px;
+      }
+      .steps-grid::-webkit-scrollbar { display:none; }
+      .step {
+        min-width: 240px; flex-shrink: 0;
+        scroll-snap-align: start;
+        border-radius: var(--r-md);
+        border: 1px solid var(--border);
+      }
+      .step.accent { border-color: transparent; }
 
-      .compare-head, .compare-row { grid-template-columns:1.5fr 1fr 1fr; }
-      .cr-label { font-size:13px; padding:14px 16px; }
+      /* compare table → scroll horizontal */
+      .compare-table { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+      .compare-head,
+      .compare-row { grid-template-columns: 160px 100px 100px; min-width: 360px; }
 
-      .metrics-row { grid-template-columns:1fr; border-radius:var(--r-md); }
-      .metric-cell { border-right:none; border-bottom:1px solid var(--border-inv); }
-      .metric-cell:last-child { border-bottom:none; }
-      .testimonials { grid-template-columns:1fr; }
+      /* beneficios → scroll horizontal */
+      .benefits-grid {
+        display: flex;
+        grid-template-columns: none;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+        gap: 10px;
+        margin-left: -20px; margin-right: -20px;
+        padding-left: 20px; padding-right: 20px;
+        padding-bottom: 16px;
+        margin-top: 36px;
+      }
+      .benefits-grid::-webkit-scrollbar { display:none; }
+      .benefit-card {
+        min-width: 268px; flex-shrink: 0;
+        scroll-snap-align: start;
+      }
 
+      /* portal preview */
+      .portal-preview { flex-direction:column; align-items:flex-start; gap:16px; }
+      .portal-stats { gap:20px; }
+
+      /* métricas — se mantienen horizontales, padding reducido */
+      .metrics-row { border-radius:var(--r-md); }
+      .metric-cell { padding:24px 10px; }
+      .metric-val  { font-size:clamp(30px, 9vw, 48px); }
+      .metric-label { font-size:12px; }
+
+      /* testimonios → scroll horizontal */
+      .testimonials {
+        display: flex;
+        grid-template-columns: none;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+        gap: 12px;
+        margin-left: -20px; margin-right: -20px;
+        padding-left: 20px; padding-right: 20px;
+        padding-bottom: 16px;
+      }
+      .testimonials::-webkit-scrollbar { display:none; }
+      .tcard {
+        min-width: 280px; flex-shrink: 0;
+        scroll-snap-align: start;
+      }
+
+      /* ph-grid */
+      .ph-grid { grid-template-columns:1fr; gap:10px; }
+
+      /* form / footer */
       .gate-fields { grid-template-columns:1fr; }
-      .form-row { grid-template-columns:1fr; }
-      .footer-top { flex-direction:column; }
+      .form-row    { grid-template-columns:1fr; }
+      .footer-top  { flex-direction:column; }
     }
+
     @media (max-width:480px) {
-      .steps-grid { grid-template-columns:1fr; }
       .hero-sectors-row { gap:6px; }
+      .compare-head,
+      .compare-row { grid-template-columns: 140px 88px 88px; }
     }
   </style>
 </head>
@@ -982,9 +1093,11 @@
               </div>
             </div>
           </div>
-          <!-- Placeholder note -->
-          <div class="hero-img-note">
-            📸 Aquí irá una foto real de tu máquina instalada — envíanos una para publicarla
+          <!-- Placeholder foto máquina real -->
+          <div class="ph-img tall" style="border-color:rgba(255,255,255,0.12);background:rgba(255,255,255,0.04);color:rgba(250,250,248,0.4);">
+            <div class="ph-img-icon">📸</div>
+            <strong style="color:rgba(250,250,248,0.5);">Foto real de tu máquina</strong>
+            <span>Envíanos una imagen de tu instalación<br>para publicarla aquí</span>
           </div>
         </div>
 
@@ -1025,6 +1138,29 @@
             <span class="step-icon">✨</span>
             <div class="step-title">Nosotros operamos todo</div>
             <p class="step-desc">Reposición automática, mantenimiento técnico, reportes mensuales. Tú no haces nada — ese es el punto.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ════════════════════ FOTOS ════════════════════ -->
+    <section style="padding:0 0 var(--section-py);background:var(--bg);">
+      <div class="wrap">
+        <div class="ph-grid" data-a>
+          <div class="ph-img tall">
+            <div class="ph-img-icon">🏢</div>
+            <strong>Máquina en oficina</strong>
+            <span>Foto real de instalación<br>en empresa cliente</span>
+          </div>
+          <div class="ph-img tall">
+            <div class="ph-img-icon">🥤</div>
+            <strong>Surtido personalizado</strong>
+            <span>Foto de los productos<br>seleccionados para el equipo</span>
+          </div>
+          <div class="ph-img tall">
+            <div class="ph-img-icon">⚡</div>
+            <strong>Instalación en 48h</strong>
+            <span>Foto del proceso<br>de instalación y puesta a punto</span>
           </div>
         </div>
       </div>
@@ -1112,8 +1248,15 @@
             <p class="bc-desc">Reposición automática, mantenimiento preventivo y correctivo, reportes mensuales. Tú no operas nada.</p>
           </div>
         </div>
+        <!-- Placeholder máquina en planta / hospital -->
+        <div class="ph-img short" style="margin-top:16px;width:100%;" data-a data-d="2">
+          <div class="ph-img-icon">🏭</div>
+          <strong>Tu máquina en acción</strong>
+          <span>Foto del equipo usando el servicio — en oficina, planta u hospital</span>
+        </div>
+
         <!-- Portal preview strip -->
-        <div class="portal-preview" data-a data-d="2">
+        <div class="portal-preview" data-a data-d="3">
           <div class="portal-preview-text">
             <h3>Portal digital incluido para tu empresa</h3>
             <p>Ventas, stock, transacciones y reportes descargables — en tiempo real, desde cualquier dispositivo.</p>
@@ -1239,7 +1382,14 @@
           </div>
         </div>
 
-        <div class="testimonials" data-a data-d="2">
+        <!-- Placeholder foto cliente real -->
+        <div class="ph-img short dark" style="margin-top:24px;width:100%;" data-a data-d="2">
+          <div class="ph-img-icon">📷</div>
+          <strong>Foto de cliente real</strong>
+          <span>Imagen de la instalación en una empresa real<br>con su equipo usando el servicio</span>
+        </div>
+
+        <div class="testimonials" data-a data-d="3">
           <div class="tcard">
             <div class="tcard-stars">★★★★★</div>
             <p class="tcard-quote">En 3 días ya teníamos la máquina operando. El equipo de RRHH no tuvo que hacer nada — solo avisar el espacio disponible. El servicio es completamente transparente.</p>
