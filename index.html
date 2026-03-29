@@ -1477,9 +1477,6 @@
     function closeDrawer() { document.getElementById('drawer').classList.remove('open'); }
 
     /* INTERSECTION OBSERVER */
-    new IntersectionObserver((entries) => {
-      entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add('in'); } });
-    }, {threshold:0.1}).observe(document.querySelectorAll('[data-a]'), {});
     document.querySelectorAll('[data-a]').forEach(el =>
       new IntersectionObserver(([e]) => { if(e.isIntersecting) e.target.classList.add('in'); }, {threshold:0.1}).observe(el)
     );
