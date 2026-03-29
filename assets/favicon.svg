@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none">
+  <!-- Background circle -->
+  <rect width="64" height="64" rx="14" fill="#0A4A38"/>
+  <!-- Vending machine body -->
+  <rect x="18" y="12" width="28" height="38" rx="3" fill="#FAFAF8" opacity="0.95"/>
+  <!-- Screen -->
+  <rect x="21" y="15" width="22" height="12" rx="2" fill="#0A4A38"/>
+  <!-- Screen glow line -->
+  <rect x="23" y="20" width="10" height="1.5" rx="1" fill="#F0A500" opacity="0.9"/>
+  <!-- Product rows -->
+  <rect x="21" y="30" width="6" height="5" rx="1" fill="#F0A500" opacity="0.85"/>
+  <rect x="29" y="30" width="6" height="5" rx="1" fill="#1A6B52" opacity="0.85"/>
+  <rect x="37" y="30" width="6" height="5" rx="1" fill="#F0A500" opacity="0.85"/>
+  <!-- Dispenser slot -->
+  <rect x="21" y="38" width="22" height="3" rx="1" fill="#0A4A38" opacity="0.2"/>
+  <!-- Coin slot -->
+  <rect x="39" y="16" width="3" height="1.5" rx="0.75" fill="#0A4A38" opacity="0.3"/>
+  <!-- Bottom base -->
+  <rect x="16" y="50" width="32" height="3" rx="2" fill="#FAFAF8" opacity="0.3"/>
+</svg>
