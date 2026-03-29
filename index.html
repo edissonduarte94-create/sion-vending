@@ -794,9 +794,25 @@
         scroll-snap-align:start;
       }
 
-      /* compare table → pills on mobile */
-      .compare-table { display:none; }
-      .compare-pills { display:flex; }
+      /* compare table mobile: 2-row layout per feature */
+      .compare-pills { display:none; }
+      .compare-head  { grid-template-columns:1fr 1fr; }
+      .ch-cell.empty { display:none; }
+      .ch-cell.good  { padding:10px 14px; font-size:11px; }
+      .ch-cell.bad   { padding:10px 14px; font-size:11px; }
+      .compare-row {
+        display:grid;
+        grid-template-areas:"label label" "check x";
+        grid-template-columns:1fr 1fr;
+      }
+      .cr-label {
+        grid-area:label;
+        border-right:none; border-bottom:1px solid var(--border);
+        background:var(--surface);
+        font-weight:500; font-size:13px; padding:11px 14px;
+      }
+      .cr-check { grid-area:check; padding:11px 14px; border-right:1px solid var(--border); font-size:14px; }
+      .cr-x     { grid-area:x;     padding:11px 14px; border-left:none; font-size:13px; }
 
       /* benefit-sm-grid → 2 col */
       .benefit-sm-grid { grid-template-columns:1fr 1fr; gap:10px; }
@@ -836,8 +852,6 @@
 
     @media (max-width:480px) {
       .benefit-sm-grid { grid-template-columns:1fr; }
-      .compare-head,
-      .compare-row { grid-template-columns: 140px 88px 88px; }
     }
   </style>
 </head>
