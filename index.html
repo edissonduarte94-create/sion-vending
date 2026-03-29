@@ -32,9 +32,9 @@
 
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"LocalBusiness","name":"VendingSion","telephone":"+57-304-371-7505","email":"hola@vendingsion.co","address":{"@type":"PostalAddress","addressLocality":"Bogotá","addressRegion":"Cundinamarca","addressCountry":"CO"},"priceRange":"Gratis para empresas cliente","aggregateRating":{"@type":"AggregateRating","ratingValue":"4.9","bestRating":"5","ratingCount":"47"}}</script>
 
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"¿Realmente no hay ningún costo para nuestra empresa?","acceptedAnswer":{"@type":"Answer","text":"Correcto. VendingSion instala, repone y mantiene la máquina sin ningún costo para tu empresa. Nuestro negocio es el margen en los productos."}},{"@type":"Question","name":"¿Qué pasa si la máquina se daña o queda sin stock?","acceptedAnswer":{"@type":"Answer","text":"Monitoreamos el stock en tiempo real. Ante una falla, respondemos en máximo 24 horas. El stock crítico se repone en 48 horas."}},{"@type":"Question","name":"¿Qué tipo de productos tienen las máquinas?","acceptedAnswer":{"@type":"Answer","text":"Adaptamos el surtido a tu empresa: snacks saludables, bebidas, productos de bienestar. Hacemos una encuesta inicial y puedes ajustar en cualquier momento."}},{"@type":"Question","name":"¿Cuánto tiempo tarda la instalación?","acceptedAnswer":{"@type":"Answer","text":"48 horas hábiles en Bogotá desde que firmas el acuerdo."}},{"@type":"Question","name":"¿Podemos ver las ventas y el inventario en tiempo real?","acceptedAnswer":{"@type":"Answer","text":"Sí. Cada cliente tiene un portal propio con transacciones, stock y reportes descargables."}},{"@type":"Question","name":"¿Qué pasa si queremos retirar la máquina?","acceptedAnswer":{"@type":"Answer","text":"Acuerdos de 6 meses mínimo. Luego, retiro con 30 días de anticipación sin penalidad."}}]}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"¿Realmente no hay ningún costo para nuestra empresa?","acceptedAnswer":{"@type":"Answer","text":"Correcto. VendingSion instala, repone y mantiene la máquina sin ningún costo para tu empresa. Nuestro negocio es el margen en los productos."}},{"@type":"Question","name":"¿Qué pasa si la máquina se daña o queda sin stock?","acceptedAnswer":{"@type":"Answer","text":"Monitoreamos el stock en tiempo real. Ante una falla, respondemos en máximo 24 horas. El stock crítico se repone en 48 horas."}},{"@type":"Question","name":"¿Qué tipo de productos tienen las máquinas?","acceptedAnswer":{"@type":"Answer","text":"Adaptamos el surtido a tu empresa: snacks saludables, bebidas, productos de bienestar. Hacemos una encuesta inicial y puedes ajustar en cualquier momento."}},{"@type":"Question","name":"¿Cuánto tiempo tarda la instalación?","acceptedAnswer":{"@type":"Answer","text":"72 horas hábiles en Bogotá desde que firmas el acuerdo."}},{"@type":"Question","name":"¿Podemos ver las ventas y el inventario en tiempo real?","acceptedAnswer":{"@type":"Answer","text":"Sí. Cada cliente tiene un portal propio con transacciones, stock y reportes descargables."}},{"@type":"Question","name":"¿Qué pasa si queremos retirar la máquina?","acceptedAnswer":{"@type":"Answer","text":"Acuerdos de 6 meses mínimo. Luego, retiro con 30 días de anticipación sin penalidad."}}]}</script>
 
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"HowTo","name":"Cómo instalar una vending machine en tu empresa","totalTime":"P2D","estimatedCost":{"@type":"MonetaryAmount","currency":"COP","value":"0"},"step":[{"@type":"HowToStep","position":1,"name":"Cotizamos","text":"Cuéntanos sobre tu espacio. Respondemos en 24 h."},{"@type":"HowToStep","position":2,"name":"Instalamos","text":"En 48 h la máquina está operando. Sin obras, sin costos."},{"@type":"HowToStep","position":3,"name":"Reponemos","text":"Monitoreamos y reponemos automáticamente."},{"@type":"HowToStep","position":4,"name":"Tú disfrutas","text":"Cero carga operativa para tu empresa."}]}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"HowTo","name":"Cómo instalar una vending machine en tu empresa","totalTime":"P3D","estimatedCost":{"@type":"MonetaryAmount","currency":"COP","value":"0"},"step":[{"@type":"HowToStep","position":1,"name":"Cotizamos","text":"Cuéntanos sobre tu espacio. Respondemos en 24 h."},{"@type":"HowToStep","position":2,"name":"Instalamos","text":"En 72 h la máquina está operando. Sin obras, sin costos."},{"@type":"HowToStep","position":3,"name":"Reponemos","text":"Monitoreamos y reponemos automáticamente."},{"@type":"HowToStep","position":4,"name":"Tú disfrutas","text":"Cero carga operativa para tu empresa."}]}</script>
 
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"Service","name":"Servicio de vending machines B2B en Colombia","provider":{"@id":"https://sionvending.vercel.app/#organization"},"offers":{"@type":"Offer","price":"0","priceCurrency":"COP"}}</script>
 
@@ -798,8 +798,12 @@
 
     .ph-grid {
       display: grid; grid-template-columns: repeat(3,1fr);
-      gap: 12px; margin-top: 52px;
+      gap: 20px; margin-top: 52px;
     }
+    .gal-card { display:flex; flex-direction:column; gap:0; border-radius:var(--r-md); overflow:hidden; border:1px solid var(--border); background:var(--bg); }
+    .gal-caption { padding:16px 18px 18px; }
+    .gal-caption-title { font-family:var(--ff-head); font-size:15px; font-weight:600; color:var(--text); margin-bottom:4px; }
+    .gal-caption-desc  { font-size:13px; color:var(--text-2); line-height:1.55; }
 
     /* ═══════════════════════════════
        RESPONSIVE
@@ -1028,8 +1032,8 @@
           <div class="step-card">
             <span class="step-card-num">PASO 03</span>
             <span class="step-card-icon">⚡</span>
-            <div class="step-card-title">Instalamos en 48h</div>
-            <p class="step-card-desc">Máquina y productos listos en 48 horas hábiles. Sin obras, sin gestión de tu parte, sin costos ocultos.</p>
+            <div class="step-card-title">Instalamos en 72h</div>
+            <p class="step-card-desc">Máquina y productos listos en 72 horas hábiles. Sin obras, sin gestión de tu parte, sin costos ocultos.</p>
           </div>
           <div class="step-card accent">
             <span class="step-card-num">PASO 04</span>
@@ -1052,23 +1056,35 @@
           </p>
         </div>
         <div class="ph-grid" data-a data-d="1">
-          <div class="ph-img tall" style="padding:0;overflow:hidden;">
+          <div class="gal-card">
             <img src="assets/images/galeria-oficina.jpg"
                  alt="Máquina VendingSion instalada en oficina corporativa"
-                 style="width:100%;height:100%;min-height:260px;object-fit:cover;border-radius:var(--r-md);display:block;"
+                 style="width:100%;height:260px;object-fit:cover;display:block;"
                  loading="lazy" />
+            <div class="gal-caption">
+              <div class="gal-caption-title">En el espacio de trabajo</div>
+              <p class="gal-caption-desc">La máquina se integra al entorno corporativo sin obras ni instalaciones complejas.</p>
+            </div>
           </div>
-          <div class="ph-img tall" style="padding:0;overflow:hidden;">
+          <div class="gal-card">
             <img src="assets/images/galeria-surtido.jpg"
                  alt="Surtido personalizado de productos en máquina VendingSion"
-                 style="width:100%;height:100%;min-height:260px;object-fit:cover;border-radius:var(--r-md);display:block;"
+                 style="width:100%;height:260px;object-fit:cover;display:block;"
                  loading="lazy" />
+            <div class="gal-caption">
+              <div class="gal-caption-title">Surtido 100% personalizado</div>
+              <p class="gal-caption-desc">Productos seleccionados según los hábitos y preferencias reales de tu equipo.</p>
+            </div>
           </div>
-          <div class="ph-img tall" style="padding:0;overflow:hidden;">
+          <div class="gal-card">
             <img src="assets/images/galeria-instalacion.jpg"
                  alt="Técnico instalando máquina VendingSion en empresa cliente"
-                 style="width:100%;height:100%;min-height:260px;object-fit:cover;border-radius:var(--r-md);display:block;"
+                 style="width:100%;height:260px;object-fit:cover;display:block;"
                  loading="lazy" />
+            <div class="gal-caption">
+              <div class="gal-caption-title">Instalación en 72 horas</div>
+              <p class="gal-caption-desc">Nuestro equipo técnico coordina y ejecuta todo. Tú solo das el espacio y nosotros nos encargamos del resto.</p>
+            </div>
           </div>
         </div>
       </div>
@@ -1188,7 +1204,7 @@
               <div class="calc-field">
                 <label for="cEmp">Número de empleados <span>(arrastra para ajustar)</span></label>
                 <div class="slider-row">
-                  <input type="range" id="cEmp" min="10" max="2000" value="150" oninput="calcUpdate()">
+                  <input type="range" id="cEmp" min="100" max="2000" value="150" oninput="calcUpdate()">
                   <span class="slider-val" id="cEmpVal">150</span>
                 </div>
               </div>
@@ -1352,7 +1368,7 @@
               <span class="faq-icon">+</span>
             </button>
             <div class="faq-body">
-              <div class="faq-ans">Desde que firmas el acuerdo hasta que la máquina está operando: 48 horas hábiles en Bogotá y área metropolitana. Para otras ciudades, coordinamos según cobertura.</div>
+              <div class="faq-ans">Desde que firmas el acuerdo hasta que la máquina está operando: 72 horas hábiles en Bogotá y área metropolitana. Para otras ciudades, coordinamos según cobertura.</div>
             </div>
           </div>
 
@@ -1465,15 +1481,24 @@
             <a href="mailto:hola@vendingsion.co">hola@vendingsion.co</a>
           </div>
           <div class="footer-social">
-            <a href="https://www.linkedin.com/company/vendingsion" class="fsoc" target="_blank" rel="noopener" aria-label="LinkedIn">in</a>
-            <a href="https://instagram.com/vendingsion"            class="fsoc" target="_blank" rel="noopener" aria-label="Instagram">ig</a>
-            <a href="https://wa.me/573043717505"                   class="fsoc" target="_blank" rel="noopener" aria-label="WhatsApp">w</a>
+            <a href="https://www.facebook.com/vendingsion" class="fsoc" target="_blank" rel="noopener" aria-label="Facebook">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+            </a>
+            <a href="https://instagram.com/vendingsion" class="fsoc" target="_blank" rel="noopener" aria-label="Instagram">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+            </a>
+            <a href="https://www.linkedin.com/company/vendingsion" class="fsoc" target="_blank" rel="noopener" aria-label="LinkedIn">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+            </a>
+            <a href="https://wa.me/573043717505" class="fsoc" target="_blank" rel="noopener" aria-label="WhatsApp">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
+            </a>
           </div>
         </div>
       </div>
 
       <aside class="seo-aside">
-        VendingSion es una empresa colombiana de vending machines B2B con sede en Bogotá, Colombia. Instala y opera máquinas expendedoras de snacks y bebidas en empresas, hospitales, universidades y plantas industriales. Modelo de servicio completamente gratuito para la empresa cliente. Sin ataduras de marca. Mix de productos personalizado por tipo de equipo. Disponibilidad 24/7. Instalación en 48 horas. Portal digital de cliente con métricas en tiempo real. Satisfacción promedio 4.9/5. Más de 50 empresas activas en Colombia.
+        VendingSion es una empresa colombiana de vending machines B2B con sede en Bogotá, Colombia. Instala y opera máquinas expendedoras de snacks y bebidas en empresas, hospitales, universidades y plantas industriales. Modelo de servicio completamente gratuito para la empresa cliente. Sin ataduras de marca. Mix de productos personalizado por tipo de equipo. Disponibilidad 24/7. Instalación en 72 horas. Portal digital de cliente con métricas en tiempo real. Satisfacción promedio 4.9/5. Más de 50 empresas activas en Colombia.
       </aside>
 
       <div class="footer-bottom">
@@ -1546,7 +1571,7 @@
       document.getElementById('cEmpD').textContent   = emp.toLocaleString('es-CO');
       document.getElementById('cLo').textContent     = Math.round(base*.82).toLocaleString('es-CO');
       document.getElementById('cHi').textContent     = Math.round(base*1.18).toLocaleString('es-CO');
-      const pct = ((emp-10)/(2000-10))*100;
+      const pct = ((emp-100)/(2000-100))*100;
       document.getElementById('cEmp').style.setProperty('--pct', pct+'%');
     }
 
