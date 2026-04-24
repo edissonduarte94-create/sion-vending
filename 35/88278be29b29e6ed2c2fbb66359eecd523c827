@@ -1,0 +1,23 @@
+index.html
+  7df21f6e8362428b 233-234,236,238,1590,1641,1690
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.3.4",
+  "base_commit_sha": "3588278be29b29e6ed2c2fbb66359eecd523c827",
+  "prompts": {
+    "7df21f6e8362428b": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "434e2fd3-a618-42fb-9da6-9e57ff07d957",
+        "model": "claude-sonnet-4-6"
+      },
+      "human_author": "Edisson Duarte",
+      "messages": [],
+      "total_additions": 1431,
+      "total_deletions": 6,
+      "accepted_lines": 1431,
+      "overriden_lines": 0
+    }
+  }
+}
