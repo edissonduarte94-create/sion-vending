@@ -1,0 +1,45 @@
+index.html
+  s_4f05fa3e6dda54::t_5413e6b2d148cc 1658
+  s_4f05fa3e6dda54::t_8efbe09101f21c 47,49
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.1",
+  "base_commit_sha": "f138f5f30a34e9b687c6ee7c47234e12ba1c6e12",
+  "prompts": {
+    "7df21f6e8362428b": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "434e2fd3-a618-42fb-9da6-9e57ff07d957",
+        "model": "claude-sonnet-4-6"
+      },
+      "human_author": "Edisson Duarte <edissonduarte94@gmail.com>",
+      "total_additions": 0,
+      "total_deletions": 0,
+      "accepted_lines": 1424,
+      "overriden_lines": 0
+    },
+    "88500c9559ff089d": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "10092d29-aeb4-47e5-88b6-01f00016c86e",
+        "model": "claude-opus-4-7"
+      },
+      "human_author": "Edisson Duarte <edissonduarte94@gmail.com>",
+      "total_additions": 3,
+      "total_deletions": 0,
+      "accepted_lines": 3,
+      "overriden_lines": 0
+    }
+  },
+  "sessions": {
+    "s_4f05fa3e6dda54": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "955513e9-6e4a-496c-a791-6fb0274d4988",
+        "model": "claude-sonnet-4-6"
+      },
+      "human_author": "Edisson Duarte <edissonduarte94@gmail.com>"
+    }
+  }
+}
